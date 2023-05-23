@@ -24,3 +24,11 @@ class Notes(models.Model):
 
         def __str__(self):
             return self.title
+
+    class Todo (models.Model):
+        user=models.models.ForeignKey(User,on_delete=models.CASCADE)
+        title=models.Charfield(max_length=100)
+        is_finished=models.BooleanField(default=False)
+        def __str__(self):
+            return self.title
+
