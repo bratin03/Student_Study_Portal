@@ -1,5 +1,7 @@
 from django import forms 
 from . models import *
+from django.forms import widgets
+from django.contrib.auth.forms import UserCreationForm
 
 class NotesForm(forms.ModelForm):
     class Meta:
@@ -38,3 +40,8 @@ class ConversionMassForm(form.Form):
     measure2=forms.Charfield(
         label='',widget=forms.Select(choices=CHOICES)
     )
+
+class UserRegistrationForm(USerCreationForm):
+    class Meta:
+        model=User
+        fields=['username','password1','password2']
