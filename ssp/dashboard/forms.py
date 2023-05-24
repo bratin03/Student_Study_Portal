@@ -11,13 +11,13 @@ class NotesForm(forms.ModelForm):
 class DateInput(forms.DateInput):
     input_type='date'
 
-class (HomeworkForm9forms.ModelForm):
+class HomeworkForm(forms.ModelForm):
     class Meta:
         model=Homework
         widgets={'due':DateInput()}
-        fields=['subjects','title','description','due','is_finished']
+        fields=['subject','title','description','due','is_finished']
 
-class DashboardForm(form.Form):
+class DashboardForm(forms.Form):
     text= forms.CharField(max_length=100,label="Enter Youtube Search : ")
 
 class TodoForm(forms.ModelForm):
@@ -29,19 +29,31 @@ class ConversionForm(forms.Form):
     CHOICES=[('length','Length'),('mass','Mass')]
     measurement=forms.ChoiceField(choices=CHOICES,widget=forms.RadioSelect)
 
-class ConversionMassForm(form.Form):
-    CHOICES=[('pound','Pound'),('kilogram','Kilogram')]
-    input=forms.Charfield(required=False,label=False,widget=forms.TextInput(
+class ConversionLengthForm(forms.Form):
+    CHOICES=[('yard','Yard'),('foot','Foot')]
+    input=forms.CharField(required=False,label=False,widget=forms.TextInput(
         attrs={'type':'number','placeholder':'Enter the Number'}
     ))
-    measure1=forms.Charfield(
+    measure1=forms.CharField(
         label='',widget=forms.Select(choices=CHOICES)
     )
-    measure2=forms.Charfield(
+    measure2=forms.CharField(
         label='',widget=forms.Select(choices=CHOICES)
     )
 
-class UserRegistrationForm(USerCreationForm):
+class ConversionMassForm(forms.Form):
+    CHOICES=[('pound','Pound'),('kilogram','Kilogram')]
+    input=forms.CharField(required=False,label=False,widget=forms.TextInput(
+        attrs={'type':'number','placeholder':'Enter the Number'}
+    ))
+    measure1=forms.CharField(
+        label='',widget=forms.Select(choices=CHOICES)
+    )
+    measure2=forms.CharField(
+        label='',widget=forms.Select(choices=CHOICES)
+    )
+
+class UserRegistrationForm(UserCreationForm):
     class Meta:
         model=User
         fields=['username','password1','password2']

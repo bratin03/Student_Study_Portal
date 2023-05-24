@@ -1,4 +1,4 @@
-{% extends 'dashboard/base.html' %} 
+{% extends 'dashboard/base.html' %}
 {% load static %}
 {% load crispy_form_tags %}
 {% block content %}
@@ -30,14 +30,14 @@
                     <a href="{% url 'update-homework' homework.id %}">
                         <div class="form-check">
                             {% if homework.is_finished==True %}
-                            <input class="form-check-input" type="checkbox" value="" checked >
+                            <input class="form-check-input" type="checkbox" value="" checked>
                             {% else %}
-                            <input class="form-check-input" type="checkbox" value="" >
+                            <input class="form-check-input" type="checkbox" value="">
                             {% endif %}
                             <label class="form-check-label text-light" for="flexCheckDefault">
                                 Mark as Completed
                             </label>
-                            
+
                         </div>
                     </a>
                 </td>
@@ -47,7 +47,7 @@
     </table>
     {% else %}
     <h4>All homeworks are completed!! Create to have more!!</h4>
-{% endif %}
+    {% endif %}
 </div>
 <div class=" container">
     <form method="POST">
